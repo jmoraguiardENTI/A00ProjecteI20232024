@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3586947849044082397}
   - component: {fileID: 4178147793457620173}
   - component: {fileID: 5762347350375780630}
-  - component: {fileID: 598490980980723476}
+  - component: {fileID: 5756832117505414706}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3586947849044082397
 SpriteRenderer:
@@ -149,7 +149,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1.8}
   m_Direction: 0
---- !u!114 &598490980980723476
+--- !u!114 &5756832117505414706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,6 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87751c95cf257b3438aa1f53f6ad4dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rB2D: {fileID: 0}
-  movementSpeed: 3
+  isGrounded: 0
+  groundCheckOrigin: {x: 0, y: -0.8, z: 0}
+  groundCheckDistance: 1
+  movementSpeed: 5
   jumpForce: 350

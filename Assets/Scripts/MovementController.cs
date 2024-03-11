@@ -38,7 +38,7 @@ public class MovementController : MonoBehaviour
         rB2D = GetComponent<Rigidbody2D>();
     }
 
-    // FixedUpdate is called in a constant rate
+    // FixedUpdate is called in a constant rate and is recommended to be used to check physics state
     private void FixedUpdate()
     {
         //Use Physics Raycast to detect if we are close to ground
@@ -57,16 +57,25 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GroundMovement();
+        GroundInput();
+
+        if (isJumping && isFalling)
+        {
+            rB2D.gravityScale = 2;
+        }
+        else
+        {
+            rB2D.gravityScale = 1;
+        }
 
         if (isSwimming)
         {
-            WaterMovement();
+            WaterInput();
         }
     }
 
     // All grounded movement input is controlled here
-    void GroundMovement()
+    void GroundInput()
     {
         float horizontalMovement = Input.GetAxis("Horizontal");
 
@@ -88,7 +97,7 @@ public class MovementController : MonoBehaviour
     }
 
     // All water movement input is controlled here
-    void WaterMovement()
+    void WaterInput()
     {
         if (Input.GetButtonDown("Jump"))
         {

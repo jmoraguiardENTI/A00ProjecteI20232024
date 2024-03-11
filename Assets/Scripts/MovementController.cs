@@ -19,12 +19,17 @@ public class MovementController : MonoBehaviour
     private float movementSpeed = 5.0f;
 
     [SerializeField]
+    private bool isFalling = false;
+
+    [SerializeField]
     private bool isJumping = false;
     [SerializeField]
     private float jumpForce = 100.0f;
 
     [SerializeField]
-    private bool isFalling = false;
+    LayerMask waterMask;
+    [SerializeField]
+    private bool isSwimming;
 
     // Start is called before the first frame update
     void Start()
@@ -52,11 +57,16 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        GroundMovement();
+
+        if (isSwimming)
+        {
+            WaterMovement();
+        }
     }
 
-    // All mavement input is controlled here
-    void Movement()
+    // All grounded movement input is controlled here
+    void GroundMovement()
     {
         float horizontalMovement = Input.GetAxis("Horizontal");
 
@@ -74,6 +84,33 @@ public class MovementController : MonoBehaviour
                 rB2D.AddForce(new Vector2(0, jumpForce));
                 isJumping = true;
             }
+        }
+    }
+
+    // All water movement input is controlled here
+    void WaterMovement()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            // Reset vertical velocity and apply jump force
+            rB2D.velocity = new Vector2(rB2D.velocity.x, 0);
+            rB2D.AddForce(new Vector2(0, jumpForce));
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ((waterMask & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
+        { 
+            isSwimming = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if ((waterMask & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
+        {
+            isSwimming = false;
         }
     }
 

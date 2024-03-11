@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3586947849044082397
 SpriteRenderer:
@@ -161,8 +161,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87751c95cf257b3438aa1f53f6ad4dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
   isGrounded: 0
   groundCheckOrigin: {x: 0, y: -0.8, z: 0}
-  groundCheckDistance: 1
+  groundCheckDistance: 0.5
   movementSpeed: 5
+  isFalling: 0
+  isJumping: 0
   jumpForce: 350
+  waterMask:
+    serializedVersion: 2
+    m_Bits: 16
+  isSwimming: 0

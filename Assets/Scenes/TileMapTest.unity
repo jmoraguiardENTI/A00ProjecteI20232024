@@ -236,6 +236,10 @@ PrefabInstance:
       value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 5756832117505414706, guid: 9a5e5c496112609438457859a6413bfe, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756832117505414706, guid: 9a5e5c496112609438457859a6413bfe, type: 3}
       propertyPath: groundCheckDistance
       value: 0.5
       objectReference: {fileID: 0}
